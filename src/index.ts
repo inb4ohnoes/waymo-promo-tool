@@ -60,7 +60,9 @@ export default {
           text-decoration: none; border-radius: 10px; margin-top: 1rem;
           transition: background 0.2s ease-in-out;
         }
-        .big-button:active { background: #005fcc; text-decoration: none; }
+        .big-button:hover, .big-button:active {
+          text-decoration: none;
+        }
         #copiedText {
           color: #3cb371; font-weight: bold; opacity: 0;
           transition: opacity 0.3s ease-in-out;
