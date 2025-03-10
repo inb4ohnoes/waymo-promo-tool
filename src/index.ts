@@ -29,17 +29,21 @@ export default {
       <title>Waymo Promo</title>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
       <style>
-        body {
-          display: flex; flex-direction: column; justify-content: center; align-items: center;
-          height: 100vh; margin: 0; overflow: hidden; padding: 0;
-          touch-action: pan-x pan-y;
-          touch-action: none;
+        html, body {
+          height: 100%;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
         .container {
-          text-align: center; max-width: 600px; width: 100%;
-          display: flex; flex-direction: column; align-items: center;
-          justify-content: center;
-          margin: auto;
+          text-align: center;
+          max-width: 600px;
+          width: 90%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
         h1 { margin-bottom: 0.3rem; }
         h2 { margin-top: 0.1rem; }
