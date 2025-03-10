@@ -39,12 +39,14 @@ export default {
         }
         h1 { margin-bottom: 0.3rem; }
         h2 { margin-top: 0.1rem; }
-        .code-section { margin-top: 1rem; }
-        .code-box { 
+        .code-box, .big-button { 
+          width: 100%; max-width: 400px; 
           display: flex; justify-content: space-between; align-items: center; 
-          padding: 1rem; border-radius: 10px; font-size: 1.5rem; border: 2px solid gray; 
-          background-color: rgba(255, 255, 255, 0.1); transition: background-color 0.3s, border-color 0.3s; 
-          margin-top: 1rem; /* Adds space below the heading */
+          padding: 1rem; border-radius: 10px; font-size: 1.5rem; 
+        }
+        .code-box { 
+          border: 2px solid gray; background-color: rgba(255, 255, 255, 0.1); 
+          transition: background-color 0.3s, border-color 0.3s;
         }
         .error { background-color: rgba(255, 50, 50, 0.2); border: 2px solid darkred; }
         .copied { background-color: rgba(50, 205, 50, 0.2); border: 2px solid darkgreen !important; }
@@ -55,8 +57,7 @@ export default {
         .copy-btn:focus { outline: none; }
         .copy-btn:disabled { cursor: not-allowed; opacity: 0.5; }
         .big-button { 
-          display: inline-block; padding: 1rem; font-size: 1.2rem; 
-          text-align: center; background: #007aff; color: white; 
+          justify-content: center; text-align: center; background: #007aff; color: white; 
           text-decoration: none; border-radius: 10px; margin-top: 1rem; 
           transition: background 0.2s ease-in-out;
         }
@@ -64,7 +65,7 @@ export default {
         .big-button:active { background: #005fcc; }
         #copiedText { 
           color: #3cb371; visibility: hidden; font-weight: bold; opacity: 0; 
-          transition: opacity 0.3s ease-in-out; /* Fade-in effect */
+          transition: opacity 0.3s ease-in-out;
           margin-top: 0.5rem;
         }
         .error-text { 
@@ -83,7 +84,6 @@ export default {
       <div class="container">
         <h1>$10 off your first Waymo One ride</h1>
         <h2>San Francisco territory only</h2>
-        <h3 class="code-section">Promo code</h3>
         
         ${!activated ? `<p class="error-text">Code has been used up this month.\nTry again next month.</p>` : ""}
         <p id="copiedText">Code copied!</p>
