@@ -31,9 +31,9 @@ export default {
       <style>
         body { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0; }
         .container { text-align: center; max-width: 600px; width: 90%; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
-        .code-box { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-radius: 10px; font-size: 1.5rem; border: 2px solid gray; background-color: rgba(255, 255, 255, 0.1); }
+        .code-box { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-radius: 10px; font-size: 1.5rem; border: 2px solid gray; background-color: rgba(255, 255, 255, 0.1); transition: background-color 0.3s, border-color 0.3s; }
         .error { background-color: rgba(255, 50, 50, 0.2); border: 2px solid darkred; }
-        .copied { background-color: rgba(50, 205, 50, 0.2); border: 2px solid darkgreen; }
+        .copied { background-color: rgba(50, 205, 50, 0.2); border: 2px solid darkgreen !important; }
         .copy-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; padding: 0.5rem; }
         .copy-btn:disabled { cursor: not-allowed; opacity: 0.5; }
         .big-button { display: block; padding: 1rem; font-size: 1.2rem; text-align: center; background: #007aff; color: white; text-decoration: none; border-radius: 10px; margin-top: 1rem; }
@@ -60,9 +60,16 @@ export default {
       <script>
         function copyCode() {
           const copiedText = document.getElementById("copiedText");
+          const codeBox = document.getElementById("codeBox");
+          
           navigator.clipboard.writeText(document.getElementById("promoCode").value).then(() => {
             copiedText.style.display = "block";
-            setTimeout(() => copiedText.style.display = "none", 3000);
+            codeBox.classList.add("copied");
+
+            setTimeout(() => {
+              copiedText.style.display = "none";
+              codeBox.classList.remove("copied");
+            }, 3000);
           });
         }
       </script>
