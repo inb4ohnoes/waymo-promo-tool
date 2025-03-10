@@ -107,7 +107,7 @@ export default {
       </style>
     </head>
     <body>
-       <ul>
+       <ul style="margin-bottom: 0;">
         <li>
           <p style="margin: 0;">Waymo Promo Tool</p>
         </li>
