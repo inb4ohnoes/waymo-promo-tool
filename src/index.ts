@@ -20,9 +20,10 @@ export default {
     const promoCodeMatch = fullLink.match(/[?&]code=([^&]+)/);
     const promoCode = promoCodeMatch ? promoCodeMatch[1] : "XXXX-XXXX";
 
-    // Only show "Code copied!" element if there's no error
-    const copiedTextElement = activated
-      ? `<p id="copiedText">Code copied!</p>`
+    // Only show "Code copied!" element if no error
+    // We’ll reserve space for it so elements don't jump.
+    const copiedTextMarkup = activated
+      ? `<p id="copiedText" class="hidden">Code copied!</p>`
       : "";
 
     const html = `<!DOCTYPE html>
@@ -33,20 +34,29 @@ export default {
   <title>Waymo Promo</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
   <style>
-    /* Layout & Centering */
+    /* Override Water.css margin to ensure true centering */
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100%;
+      height: 100%;
+    }
     body {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center; /* Center vertically & horizontally */
-      margin: 0;
-      height: 100vh;
-      overflow: hidden; /* No scrolling */
+      justify-content: center; /* center horizontally & vertically */
+      overflow: hidden; /* no scrolling */
+      position: relative; /* for the bottom image */
+      background-color: #1a1a1a; /* optional darker background for contrast */
     }
+
     .container {
-      text-align: center;
+      /* Force container to center on large screens */
+      text-align: center !important;
       max-width: 600px;
       width: 90%;
+      margin: 0 auto !important;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -56,7 +66,7 @@ export default {
     h1 { margin-bottom: 0.3rem; }
     h2 { margin-top: 0.1rem; }
 
-    /* Code Box & Download Button */
+    /* Code box & Download button */
     .code-box, .big-button {
       width: 100%;
       max-width: 400px;
@@ -67,13 +77,14 @@ export default {
       border-radius: 10px;
       font-size: 1.5rem;
     }
+
     .code-box {
       border: 2px solid gray;
       background-color: rgba(255, 255, 255, 0.1);
       transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
     }
 
-    /* Error / Copied States */
+    /* Error & Copied states */
     .error {
       background-color: rgba(255, 50, 50, 0.2);
       border: 2px solid darkred;
@@ -83,7 +94,7 @@ export default {
       border: 2px solid darkgreen !important;
     }
 
-    /* Copy Button */
+    /* Copy button */
     .copy-btn {
       background: none;
       border: none;
@@ -91,18 +102,18 @@ export default {
       cursor: pointer;
       padding: 0.5rem;
       outline: none;
-      user-select: none; /* Prevent text selection highlight */
+      user-select: none; /* prevent selection highlight */
     }
     .copy-btn:focus, .copy-btn:hover {
       outline: none;
-      background: none; /* Remove hover highlight */
+      background: none; /* remove hover highlight */
     }
     .copy-btn:disabled {
       cursor: not-allowed;
       opacity: 0.5;
     }
 
-    /* Download Button */
+    /* Download App button */
     .big-button {
       justify-content: center;
       text-align: center;
@@ -116,34 +127,41 @@ export default {
     .big-button:hover { text-decoration: none; }
     .big-button:active { background: #005fcc; }
 
-    /* "Code copied!" text */
+    /* "Code copied!" text transitions */
     #copiedText {
       color: #3cb371;
-      visibility: hidden; /* Reserve space, but hide text */
       font-weight: bold;
-      opacity: 0; /* Start invisible */
-      transition: opacity 0.3s ease-in-out;
       margin-top: 0.5rem;
+      height: 1.5rem; /* reserve space to avoid jump */
+      transition: opacity 0.3s ease-in-out;
+    }
+    .hidden {
+      visibility: hidden;
+      opacity: 0;
+    }
+    .show {
+      visibility: visible;
+      opacity: 1;
     }
 
-    /* Error Text */
+    /* Error text */
     .error-text {
       color: #ff6666;
       font-weight: bold;
-      white-space: pre-line; /* For new line in error text */
+      white-space: pre-line; /* for new line in error text */
       margin-top: 0.5rem;
     }
 
-    /* Redeem Text */
+    /* Redeem text */
     .redeem-text {
       font-size: 0.9rem;
       color: gray;
       margin-top: 0.5rem;
     }
 
-    /* Footer Image */
+    /* Footer image with horizontal "padding" */
     .footer-img {
-      width: calc(100% - 40px); /* Add 20px on each side for "padding" */
+      width: calc(100% - 40px); /* add 20px space on each side */
       max-width: 600px;
       position: absolute;
       bottom: 0;
@@ -162,7 +180,7 @@ export default {
         ? `<p class="error-text">Code has been used up this month.\nTry again next month.</p>`
         : ""
     }
-    ${copiedTextElement}
+    ${copiedTextMarkup}
 
     <div id="codeBox" class="code-box ${!activated ? "error" : ""}">
       <input
@@ -187,28 +205,26 @@ export default {
     function copyCode() {
       const copiedText = document.getElementById("copiedText");
       const codeBox = document.getElementById("codeBox");
+      const promoInput = document.getElementById("promoCode");
+
+      if (!copiedText || !promoInput) return; // if error or not activated
 
       // Copy text to clipboard
-      navigator.clipboard.writeText(document.getElementById("promoCode").value).then(() => {
-        // Make "Code copied!" text visible
-        copiedText.style.visibility = "visible";
+      navigator.clipboard.writeText(promoInput.value).then(() => {
+        // Make sure the element is hidden -> then show it
+        copiedText.classList.remove("hidden");
+        void copiedText.offsetWidth; // force reflow for Safari
+        copiedText.classList.add("show");
 
-        // Force reflow to ensure the fade in is recognized across browsers
-        copiedText.getBoundingClientRect();
-
-        // Fade in
-        copiedText.style.opacity = "1";
         codeBox.classList.add("copied");
 
-        // After 3s, fade out
         setTimeout(() => {
-          copiedText.style.opacity = "0";
+          // Fade out
+          copiedText.classList.remove("show");
           codeBox.classList.remove("copied");
-
-          // Wait for fade-out transition to finish
           setTimeout(() => {
-            copiedText.style.visibility = "hidden";
-          }, 300);
+            copiedText.classList.add("hidden");
+          }, 300); // wait for fade-out transition
         }, 3000);
       });
     }
