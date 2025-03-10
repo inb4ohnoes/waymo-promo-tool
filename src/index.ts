@@ -48,27 +48,29 @@ export default {
           border: 2px solid gray; background-color: rgba(255, 255, 255, 0.1);
           transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
         }
-        .error { background-color: rgba(255, 50, 50, 0.2); border: 2px solid darkred; display: block; }
+        .error { background-color: rgba(255, 50, 50, 0.2); border: 2px solid darkred; }
         .copied { background-color: rgba(50, 205, 50, 0.2); border: 2px solid darkgreen !important; }
         .copy-btn {
           background: none; border: none; font-size: 1.2rem; cursor: pointer; padding: 0.5rem;
-          outline: none; user-select: none; /* Prevents selection */
+          outline: none; user-select: none;
         }
+        .copy-btn:hover, .copy-btn:focus { background: none; }
         .big-button {
           justify-content: center; text-align: center; background: #007aff; color: white;
           text-decoration: none; border-radius: 10px; margin-top: 1rem;
           transition: background 0.2s ease-in-out;
         }
+        .big-button:active { background: #005fcc; text-decoration: none; }
         #copiedText {
-          color: #3cb371; visibility: hidden; font-weight: bold; opacity: 0;
-          transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
+          color: #3cb371; font-weight: bold; opacity: 0;
+          transition: opacity 0.3s ease-in-out;
+          display: none;
           margin-top: 0.5rem;
         }
         .error-text {
           color: #ff6666; font-weight: bold;
           white-space: pre-line;
           margin-top: 0.5rem;
-          display: block;
         }
         .redeem-text { font-size: 0.9rem; color: gray; margin-top: 0.5rem; }
         .footer-img {
@@ -99,17 +101,14 @@ export default {
         function copyCode() {
           const copiedText = document.getElementById("copiedText");
           const codeBox = document.getElementById("codeBox");
-         
-          navigator.clipboard.writeText(document.getElementById("promoCode").value).then(() => {
-            copiedText.style.visibility = "visible";
-            copiedText.style.opacity = "1";
-            copiedText.style.transition = "opacity 0.3s ease-in-out, visibility 0s";
-            codeBox.classList.add("copied");
+          copiedText.style.display = "block";
+          copiedText.style.opacity = "1";
+          codeBox.classList.add("copied");
 
+          navigator.clipboard.writeText(document.getElementById("promoCode").value).then(() => {
             setTimeout(() => {
               copiedText.style.opacity = "0";
-              copiedText.style.transition = "opacity 0.3s ease-in-out, visibility 0s 0.3s";
-              setTimeout(() => copiedText.style.visibility = "hidden", 300);
+              setTimeout(() => copiedText.style.display = "none", 300);
               codeBox.classList.remove("copied");
             }, 3000);
           });
