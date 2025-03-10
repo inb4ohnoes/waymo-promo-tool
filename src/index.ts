@@ -30,13 +30,12 @@ export default {
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
       <style>
         body { 
-          display: flex; flex-direction: column; justify-content: center; align-items: center; 
-          height: 100vh; margin: 0; overflow: hidden;
+          display: flex; flex-direction: column; justify-content: flex-start; align-items: center; 
+          height: 100vh; margin: 0; overflow: hidden; padding-top: 5vh;
         }
         .container { 
           text-align: center; max-width: 600px; width: 90%; 
-          display: flex; flex-direction: column; justify-content: center;
-          position: relative; top: -5vh; /* Moves up slightly to compensate for the image */
+          display: flex; flex-direction: column; align-items: center;
         }
         h1 { margin-bottom: 0.3rem; }
         h2 { margin-top: 0.1rem; }
@@ -64,7 +63,7 @@ export default {
         .big-button:hover { text-decoration: none; }
         .big-button:active { background: #005fcc; }
         #copiedText { 
-          color: #3cb371; display: none; font-weight: bold; opacity: 0; 
+          color: #3cb371; visibility: hidden; font-weight: bold; opacity: 0; 
           transition: opacity 0.3s ease-in-out; /* Fade-in effect */
           margin-top: 0.5rem;
         }
@@ -105,13 +104,13 @@ export default {
           const codeBox = document.getElementById("codeBox");
           
           navigator.clipboard.writeText(document.getElementById("promoCode").value).then(() => {
-            copiedText.style.display = "block";
+            copiedText.style.visibility = "visible"; // Keep space reserved
             copiedText.style.opacity = "1"; // Fade in
             codeBox.classList.add("copied");
 
             setTimeout(() => {
               copiedText.style.opacity = "0"; // Fade out
-              setTimeout(() => copiedText.style.display = "none", 300);
+              setTimeout(() => copiedText.style.visibility = "hidden", 300);
               codeBox.classList.remove("copied");
             }, 3000);
           });
