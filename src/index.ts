@@ -1,4 +1,4 @@
-ainterface Env {
+interface Env {
   ASSETS: Fetcher;
   PROMO_KV: KVNamespace;
 }
