@@ -100,10 +100,18 @@ export default {
           position: absolute; bottom: 0;
           left: 50%; transform: translateX(-50%);
         }
+        li {
+          float: left;
+          display: inline;
+        }
       </style>
     </head>
     <body>
-      <p style="text-align: left;">Waymo Promo Tool</p>
+       <ul>
+        <li><p>Waymo Promo Tool</p></li>
+        <li style="float:right"><a href="https://github.com/burritosoftware/waymo-promo-tool">GitHub</a></li>
+      </ul>
+      <p style="text-align: left;"></p>
       <p style="text-align: right;"><a href="https://github.com/burritosoftware/waymo-promo-tool">GitHub</a></p>
       <div class="container">
         <h3>Hi! Here's my current referral code!\nThanks for watching.</h3>
