@@ -37,6 +37,10 @@ export default {
           justify-content: flex-start;
           align-items: center;
         }
+        body {
+          touch-action: pan-x pan-y;
+          touch-action: none;
+        }
         .container {
           text-align: center;
           max-width: 600px;
@@ -89,7 +93,7 @@ export default {
         }
         .redeem-text { font-size: 0.9rem; color: gray; margin-top: 0.5rem; }
         .footer-img {
-          width: 100%; max-width: 600px; padding: 0 20px;
+          width: 95%; max-width: 600px; padding: 0 20px;
           position: absolute; bottom: 0;
           left: 50%; transform: translateX(-50%);
         }
