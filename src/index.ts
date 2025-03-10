@@ -85,6 +85,7 @@ export default {
           visibility: hidden;
           margin-top: 0.5rem;
           display: ${activated ? "block" : "none"};
+          will-change: opacity; /* Hint to Safari to optimize for opacity transitions */
         }
         .error-text {
           color: #ff6666; font-weight: bold;
