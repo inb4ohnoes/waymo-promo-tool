@@ -1,4 +1,4 @@
-interface Env {
+ainterface Env {
   ASSETS: Fetcher;
   PROMO_KV: KVNamespace;
 }
@@ -108,8 +108,8 @@ export default {
     </head>
     <body>
        <ul>
-        <li><p>Waymo Promo Tool</p></li>
-        <li style="float:right"><a href="https://github.com/burritosoftware/waymo-promo-tool">GitHub</a></li>
+        <li><p style="margin: 0;>Waymo Promo Tool</p></li>
+        <li style="float:right; margin: 0 2em;"><a href="https://github.com/burritosoftware/waymo-promo-tool">GitHub</a></li>
       </ul>
       <p style="text-align: left;"></p>
       <p style="text-align: right;"><a href="https://github.com/burritosoftware/waymo-promo-tool">GitHub</a></p>
