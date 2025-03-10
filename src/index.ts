@@ -82,10 +82,9 @@ export default {
           color: #3cb371; font-weight: bold; opacity: 0;
           transition: opacity 0.3s ease-in-out;
           height: 1.5rem;
-          visibility: hidden;
           margin-top: 0.5rem;
           display: ${activated ? "block" : "none"};
-          will-change: opacity; /* Hint to Safari to optimize for opacity transitions */
+          pointer-events: none; /* Ensures it doesn't interfere with interactions */
         }
         .error-text {
           color: #ff6666; font-weight: bold;
@@ -122,14 +121,13 @@ export default {
         function copyCode() {
           const copiedText = document.getElementById("copiedText");
           const codeBox = document.getElementById("codeBox");
-          copiedText.style.visibility = "visible";
+
           copiedText.style.opacity = "1";
           codeBox.classList.add("copied");
 
           navigator.clipboard.writeText(document.getElementById("promoCode").value).then(() => {
             setTimeout(() => {
               copiedText.style.opacity = "0";
-              setTimeout(() => copiedText.style.visibility = "hidden", 300);
               codeBox.classList.remove("copied");
             }, 3000);
           });
