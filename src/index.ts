@@ -44,8 +44,10 @@ export default {
           display: flex;
           flex-direction: column;
           align-items: center;
+          justify-content: center;
+          min-height: calc(100vh - 150px); /* Adjusts for footer space */
         }
-        h1 { margin-bottom: 0.3rem; }
+        h1 { margin-bottom: 0.3rem; white-space: pre-line; }
         h2 { margin-top: 0.1rem; }
         .code-box, .big-button {
           width: 100%; max-width: 400px;
@@ -93,7 +95,7 @@ export default {
     </head>
     <body>
       <div class="container">
-        <h1>$10 off your first Waymo One ride</h1>
+        <h1>$10 off your first\nWaymo One ride</h1>
         <h2>San Francisco territory only</h2>
       
         ${!activated ? `<p class="error-text">Code has been used up this month.\nTry again next month.</p>` : ""}
