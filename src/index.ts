@@ -102,16 +102,17 @@ export default {
         }
         li {
           float: left;
-          display: inline;
+          display: block;
+          padding: 0 1em;
         }
       </style>
     </head>
     <body>
-       <ul style="margin-bottom: 0;">
+       <ul style="margin-bottom: 0; padding: 0;">
         <li>
-          <p style="margin: 0;">Waymo Promo Tool</p>
+          <p style="margin: 0;">Waymo Promo Tool (Unofficial)</p>
         </li>
-        <li style="float:right; margin: 0 2em;">
+        <li>
           <a href="https://github.com/burritosoftware/waymo-promo-tool">GitHub</a>
         </li>
       </ul>
