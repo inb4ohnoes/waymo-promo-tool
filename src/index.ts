@@ -59,6 +59,9 @@ export default {
           display: flex; justify-content: space-between; align-items: center;
           padding: 1rem; border-radius: 10px; font-size: 1.5rem;
         }
+        h3 {
+          white-space: pre-line;
+        }
         .code-box {
           border: 2px solid gray; background-color: rgba(255, 255, 255, 0.1);
           transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
@@ -100,6 +103,8 @@ export default {
       </style>
     </head>
     <body>
+      <p style="text-align: left;">Waymo Promo Tool</p>
+      <p style="text-align: right;"><a href="https://github.com/burritosoftware/waymo-promo-tool">GitHub</a></p>
       <div class="container">
         <h3>Hi! Here's my current referral code!\nThanks for watching.</h3>
         <h1>$10 off your first\nWaymo One ride</h1>
