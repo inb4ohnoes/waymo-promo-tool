@@ -30,7 +30,7 @@ export default {
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
       <style>
         body { 
-          display: flex; flex-direction: column; justify-content: flex-start; align-items: center; 
+          display: flex; flex-direction: column; align-items: center; justify-content: center;
           height: 100vh; margin: 0; overflow: hidden; padding-top: 5vh;
         }
         .container { 
@@ -66,8 +66,7 @@ export default {
         .big-button:active { background: #005fcc; }
         #copiedText { 
           color: #3cb371; opacity: 0; transition: opacity 0.5s ease-in-out;
-          margin-top: 0.5rem; height: 1.5rem;
-          display: ${activated ? "block" : "none"};
+          margin-top: 0.5rem; height: 1.5rem; visibility: hidden;
         }
         .error-text { 
           color: #ff6666; font-weight: bold; 
@@ -76,7 +75,7 @@ export default {
         }
         .redeem-text { font-size: 0.9rem; color: gray; margin-top: 0.5rem; }
         .footer-img { 
-          width: 100%; max-width: 600px; padding: 0 10px; position: absolute; bottom: 0; 
+          width: calc(100% - 20px); max-width: 600px; position: absolute; bottom: 0; 
           left: 50%; transform: translateX(-50%);
         }
       </style>
@@ -87,7 +86,7 @@ export default {
         <h2>San Francisco territory only</h2>
         
         ${!activated ? `<p class="error-text">Code has been used up this month.\nTry again next month.</p>` : ""}
-        <p id="copiedText">Code copied!</p>
+        <p id="copiedText" ${!activated ? 'style="display: none;"' : ''}>Code copied!</p>
 
         <div id="codeBox" class="code-box ${!activated ? "error" : ""}">
           <input type="text" id="promoCode" value="${promoCode}" readonly 
@@ -103,18 +102,18 @@ export default {
         function copyCode() {
           const copiedText = document.getElementById("copiedText");
           const codeBox = document.getElementById("codeBox");
-          
-          navigator.clipboard.writeText(document.getElementById("promoCode").value).then(() => {
-            copiedText.style.display = "block";
-            copiedText.style.opacity = "1"; // Fade in
-            codeBox.classList.add("copied");
 
-            setTimeout(() => {
-              copiedText.style.opacity = "0"; // Fade out
-              setTimeout(() => copiedText.style.display = "none", 300);
-              codeBox.classList.remove("copied");
-            }, 3000);
-          });
+          if (copiedText.style.display === "none") return; // Prevents showing if error is present
+          
+          copiedText.style.visibility = "visible";
+          copiedText.style.opacity = "1"; // Fade in
+          codeBox.classList.add("copied");
+
+          setTimeout(() => {
+            copiedText.style.opacity = "0"; // Fade out
+            setTimeout(() => copiedText.style.visibility = "hidden", 300);
+            codeBox.classList.remove("copied");
+          }, 3000);
         }
       </script>
     </body>
