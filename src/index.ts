@@ -38,6 +38,7 @@ export default {
         .container {
           text-align: center; max-width: 600px; width: 90%;
           display: flex; flex-direction: column; align-items: center;
+          margin: 0 auto;
         }
         h1 { margin-bottom: 0.3rem; }
         h2 { margin-top: 0.1rem; }
