@@ -32,6 +32,8 @@ export default {
         body {
           display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
           height: 100vh; margin: 0; overflow: hidden; padding-top: 5vh;
+          touch-action: pan-x pan-y;
+          touch-action: none;
         }
         .container {
           text-align: center; max-width: 600px; width: 90%;
