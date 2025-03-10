@@ -108,8 +108,12 @@ export default {
     </head>
     <body>
        <ul>
-        <li><p style="margin: 0;>Waymo Promo Tool</p></li>
-        <li style="float:right; margin: 0 2em;"><a href="https://github.com/burritosoftware/waymo-promo-tool">GitHub</a></li>
+        <li>
+          <p style="margin: 0;">Waymo Promo Tool</p>
+        </li>
+        <li style="float:right; margin: 0 2em;">
+          <a href="https://github.com/burritosoftware/waymo-promo-tool">GitHub</a>
+        </li>
       </ul>
       <div class="container">
         <h3>Hi! Here's my current referral code!\nThanks for watching.</h3>
