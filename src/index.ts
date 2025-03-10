@@ -30,15 +30,16 @@ export default {
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
       <style>
         body {
-          display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
-          height: 100vh; margin: 0; overflow: hidden; padding-top: 5vh;
+          display: flex; flex-direction: column; justify-content: center; align-items: center;
+          height: 100vh; margin: 0; overflow: hidden; padding: 0;
           touch-action: pan-x pan-y;
           touch-action: none;
         }
         .container {
-          text-align: center; max-width: 600px; width: 90%;
+          text-align: center; max-width: 600px; width: 100%;
           display: flex; flex-direction: column; align-items: center;
-          margin: 0 auto;
+          justify-content: center;
+          margin: auto;
         }
         h1 { margin-bottom: 0.3rem; }
         h2 { margin-top: 0.1rem; }
