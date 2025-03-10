@@ -61,6 +61,7 @@ export default {
         }
         h3 {
           white-space: pre-line;
+          margin-bottom: 0;
         }
         .code-box {
           border: 2px solid gray; background-color: rgba(255, 255, 255, 0.1);
