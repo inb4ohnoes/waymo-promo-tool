@@ -34,7 +34,7 @@ export default {
           margin: 0;
           display: flex;
           flex-direction: column;
-          justify-content: center;
+          justify-content: flex-start;
           align-items: center;
         }
         .container {
@@ -45,7 +45,8 @@ export default {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          min-height: calc(100vh - 200px); /* Adjusted for more space */
+          flex-grow: 1;
+          padding-bottom: 150px; /* Pushes content up to make space for footer */
         }
         h1 { margin-bottom: 0.3rem; white-space: pre-line; }
         h2 { margin-top: 0.1rem; }
@@ -88,7 +89,7 @@ export default {
         }
         .redeem-text { font-size: 0.9rem; color: gray; margin-top: 0.5rem; }
         .footer-img {
-          width: 100%; max-width: 600px; padding: 0 20px; /* Added side padding */
+          width: 100%; max-width: 600px; padding: 0 20px;
           position: absolute; bottom: 0;
           left: 50%; transform: translateX(-50%);
         }
