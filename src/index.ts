@@ -1,9 +1,6 @@
 interface Env {
-
   ASSETS: Fetcher;
-
   PROMO_KV: KVNamespace;
-
 }
 
 export default {
@@ -51,7 +48,7 @@ export default {
           border: 2px solid gray; background-color: rgba(255, 255, 255, 0.1);
           transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
         }
-        .error { background-color: rgba(255, 50, 50, 0.2); border: 2px solid darkred; }
+        .error { background-color: rgba(255, 50, 50, 0.2); border: 2px solid darkred; display: block; }
         .copied { background-color: rgba(50, 205, 50, 0.2); border: 2px solid darkgreen !important; }
         .copy-btn {
           background: none; border: none; font-size: 1.2rem; cursor: pointer; padding: 0.5rem;
@@ -69,9 +66,9 @@ export default {
         }
         .error-text {
           color: #ff6666; font-weight: bold;
-          white-space: pre-line; /* Ensures second sentence appears on a new line */
+          white-space: pre-line;
           margin-top: 0.5rem;
-          display: none;
+          display: block;
         }
         .redeem-text { font-size: 0.9rem; color: gray; margin-top: 0.5rem; }
         .footer-img {
@@ -124,4 +121,3 @@ export default {
     return new Response(html, { headers: { "Content-Type": "text/html" } });
   }
 };
-
