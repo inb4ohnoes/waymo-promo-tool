@@ -67,6 +67,7 @@ export default {
           height: 1.5rem;
           visibility: hidden;
           margin-top: 0.5rem;
+          display: ${activated ? "block" : "none"};
         }
         .error-text {
           color: #ff6666; font-weight: bold;
@@ -85,7 +86,7 @@ export default {
         <h1>$10 off your first Waymo One ride</h1>
         <h2>San Francisco territory only</h2>
       
-        ${!activated ? `<p class="error-text">Code has been used up this month.\nTry again next month.</p><script>document.getElementById('copiedText').style.display = 'none';</script>` : ""}
+        ${!activated ? `<p class="error-text">Code has been used up this month.\nTry again next month.</p>` : ""}
         <p id="copiedText">Code copied!</p>
 
         <div id="codeBox" class="code-box ${!activated ? "error" : ""}">
@@ -104,7 +105,6 @@ export default {
           const codeBox = document.getElementById("codeBox");
           copiedText.style.visibility = "visible";
           copiedText.style.opacity = "1";
-          copiedText.style.display = "block";
           codeBox.classList.add("copied");
 
           navigator.clipboard.writeText(document.getElementById("promoCode").value).then(() => {
