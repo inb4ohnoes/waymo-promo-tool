@@ -111,8 +111,6 @@ export default {
         <li><p style="margin: 0;>Waymo Promo Tool</p></li>
         <li style="float:right; margin: 0 2em;"><a href="https://github.com/burritosoftware/waymo-promo-tool">GitHub</a></li>
       </ul>
-      <p style="text-align: left;"></p>
-      <p style="text-align: right;"><a href="https://github.com/burritosoftware/waymo-promo-tool">GitHub</a></p>
       <div class="container">
         <h3>Hi! Here's my current referral code!\nThanks for watching.</h3>
         <h1>$10 off your first\nWaymo One ride</h1>
