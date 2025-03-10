@@ -21,8 +21,8 @@ export default {
   <title>Waymo Promo</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
   <style>
-    body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-    .container { text-align: center; max-width: 600px; width: 90%; }
+    body { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    .container { text-align: center; max-width: 600px; width: 90%; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
     .code-box { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-radius: 10px; font-size: 1.5rem; border: 2px solid gray; background-color: rgba(255, 255, 255, 0.1); }
     .error { background-color: rgba(255, 50, 50, 0.2); border: 2px solid darkred; }
     .copied { background-color: rgba(50, 205, 50, 0.2); border: 2px solid darkgreen; }
@@ -32,11 +32,12 @@ export default {
     #copiedText { color: #3cb371; display: none; font-weight: bold; } /* Lighter green */
     .error-text { color: #ff6666; font-weight: bold; } /* Lighter red */
     .redeem-text { font-size: 0.9rem; color: gray; margin-top: 0.5rem; }
+    .footer-img { width: 100%; max-width: 600px; padding: 0 10px; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>$10 off your first Waymo ride</h1>
+    <h1>$10 off your first Waymo One ride</h1>
     <h2>San Francisco territory only</h2>
 
     ${!activated ? `<p class="error-text">Code has been used up this month. Try again next month.</p>` : ""}
@@ -51,6 +52,8 @@ export default {
     <p class="redeem-text">Redeem in Account > Offers & promotions > Redeem code</p>
   </div>
 
+  <img src="img/waymo-half-shot.webp" alt="Waymo Car" class="footer-img">
+
   <script>
     function copyCode() {
       const codeInput = document.getElementById("promoCode");
@@ -62,14 +65,4 @@ export default {
         codeBox.classList.add("copied");
         setTimeout(() => {
           copiedText.style.display = "none";
-          codeBox.classList.remove("copied");
-        }, 3000);
-      });
-    }
-  </script>
-</body>
-</html>`;
-
-    return new Response(html, { headers: { "Content-Type": "text/html" } });
-  }
-};
+          codeBox.class
