@@ -46,7 +46,7 @@ export default {
         }
         .code-box { 
           border: 2px solid gray; background-color: rgba(255, 255, 255, 0.1); 
-          transition: background-color 0.3s, border-color 0.3s;
+          transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
         }
         .error { background-color: rgba(255, 50, 50, 0.2); border: 2px solid darkred; }
         .copied { background-color: rgba(50, 205, 50, 0.2); border: 2px solid darkgreen !important; }
@@ -54,7 +54,7 @@ export default {
           background: none; border: none; font-size: 1.2rem; cursor: pointer; padding: 0.5rem; 
           outline: none; user-select: none; /* Prevents selection */ 
         }
-        .copy-btn:focus { outline: none; }
+        .copy-btn:focus, .copy-btn:hover { outline: none; background: none; } /* Remove hover effect */
         .copy-btn:disabled { cursor: not-allowed; opacity: 0.5; }
         .big-button { 
           justify-content: center; text-align: center; background: #007aff; color: white; 
@@ -65,7 +65,7 @@ export default {
         .big-button:active { background: #005fcc; }
         #copiedText { 
           color: #3cb371; visibility: hidden; font-weight: bold; opacity: 0; 
-          transition: opacity 0.3s ease-in-out;
+          transition: opacity 0.3s ease-in-out, visibility 0.3s step-end;
           margin-top: 0.5rem;
         }
         .error-text { 
@@ -104,7 +104,7 @@ export default {
           const codeBox = document.getElementById("codeBox");
           
           navigator.clipboard.writeText(document.getElementById("promoCode").value).then(() => {
-            copiedText.style.visibility = "visible"; // Keep space reserved
+            copiedText.style.visibility = "visible";
             copiedText.style.opacity = "1"; // Fade in
             codeBox.classList.add("copied");
 
