@@ -9,6 +9,13 @@
       "id": "fc13092f2afa43eb9312b61490f93ae9"
     }
   ],
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+  "routes": [
+    { "pattern": "waymo.burrito.software", "custom_domain": true }
+  ],
   "observability": {
     "enabled": true
   }
