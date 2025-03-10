@@ -116,7 +116,7 @@ export default {
         </li>
       </ul>
       <div class="container">
-        <h3>Hi! Here's my current referral code!\nThanks for watching.</h3>
+        <h3>Thanks for watching, here's my code!</h3>
         <h1>$10 off your first\nWaymo One ride</h1>
         <h2>San Francisco territory only</h2>
       
