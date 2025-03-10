@@ -65,4 +65,14 @@ export default {
         codeBox.classList.add("copied");
         setTimeout(() => {
           copiedText.style.display = "none";
-          codeBox.class
+          codeBox.classList.remove("copied");
+        }, 3000);
+      });
+    }
+  </script>
+</body>
+</html>`;
+
+    return new Response(html, { headers: { "Content-Type": "text/html" } });
+  }
+};
