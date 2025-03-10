@@ -50,7 +50,7 @@ export default {
           align-items: center;
           justify-content: center;
           flex-grow: 1;
-          padding-bottom: 150px; /* Pushes content up to make space for footer */
+          padding-bottom: 125px; /* Pushes content up to make space for footer */
         }
         h1 { margin-bottom: 0.3rem; white-space: pre-line; }
         h2 { margin-top: 0.1rem; }
