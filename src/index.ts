@@ -4,12 +4,13 @@ interface Env {
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
-    const url = new URL(request.url);
-    const promoCode = url.searchParams.get("code") || "XXXX-XXXX";
-    
     // Retrieve KV values
-    const link = await env.PROMO_KV.get("url") || "#";
+    const fullLink = await env.PROMO_KV.get("url") || "#";
     const activated = (await env.PROMO_KV.get("activated")) === "true";
+
+    // Extract the promo code from the URL (assumes it's in the query string as `?code=XXXXXX`)
+    const promoCodeMatch = fullLink.match(/[?&]code=([^&]+)/);
+    const promoCode = promoCodeMatch ? promoCodeMatch[1] : "XXXX-XXXX";
 
     // HTML content
     const html = `<!DOCTYPE html>
@@ -42,7 +43,7 @@ export default {
 
     <p>Redeem in <strong>Account > Offers & Promotions > Redeem Code</strong></p>
     
-    <a href="${link}" class="big-button">Download App</a>
+    <a href="${fullLink}" class="big-button">Download App</a>
   </div>
 
   <script>
