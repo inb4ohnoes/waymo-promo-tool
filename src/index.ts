@@ -105,6 +105,7 @@ export default {
           copiedText.style.visibility = "visible";
           copiedText.style.opacity = "1";
           copiedText.style.display = "block";
+          codeBox.classList.add("copied");
 
           navigator.clipboard.writeText(document.getElementById("promoCode").value).then(() => {
             setTimeout(() => {
