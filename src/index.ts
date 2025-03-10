@@ -45,7 +45,7 @@ export default {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          min-height: calc(100vh - 150px); /* Adjusts for footer space */
+          min-height: calc(100vh - 200px); /* Adjusted for more space */
         }
         h1 { margin-bottom: 0.3rem; white-space: pre-line; }
         h2 { margin-top: 0.1rem; }
@@ -88,7 +88,8 @@ export default {
         }
         .redeem-text { font-size: 0.9rem; color: gray; margin-top: 0.5rem; }
         .footer-img {
-          width: 100%; max-width: 600px; padding: 0 10px; position: absolute; bottom: 0;
+          width: 100%; max-width: 600px; padding: 0 20px; /* Added side padding */
+          position: absolute; bottom: 0;
           left: 50%; transform: translateX(-50%);
         }
       </style>
@@ -108,7 +109,7 @@ export default {
         </div>
 
         <a href="${fullLink}" class="big-button">Download App</a>
-        <p class="redeem-text">Redeem in Account > Offers & promotions > Redeem code</p>
+        <p class="redeem-text">Account → Offers & promotions → Redeem code</p>
       </div>
       <img src="/img/waymo-half-shot.png" alt="Waymo Car" class="footer-img">
       <script>
