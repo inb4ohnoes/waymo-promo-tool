@@ -23,12 +23,14 @@ export default {
   <style>
     body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
     .container { text-align: center; max-width: 600px; width: 90%; }
-    .code-box { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-radius: 10px; font-size: 1.5rem; border: 2px solid gray; }
-    .error { background-color: #ffdddd; border: 2px solid red; }
-    .copied { background-color: #ddffdd; border: 2px solid green; }
+    .code-box { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-radius: 10px; font-size: 1.5rem; border: 2px solid gray; background-color: rgba(255, 255, 255, 0.1); }
+    .error { background-color: rgba(255, 50, 50, 0.2); border: 2px solid darkred; }
+    .copied { background-color: rgba(50, 205, 50, 0.2); border: 2px solid darkgreen; }
     .copy-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; padding: 0.5rem; }
     .copy-btn:disabled { cursor: not-allowed; opacity: 0.5; }
     .big-button { display: block; padding: 1rem; font-size: 1.2rem; text-align: center; background: #007aff; color: white; text-decoration: none; border-radius: 10px; margin-top: 1rem; }
+    #copiedText { color: darkgreen; display: none; font-weight: bold; }
+    .redeem-text { font-size: 0.9rem; color: gray; margin-top: 0.5rem; }
   </style>
 </head>
 <body>
@@ -36,17 +38,16 @@ export default {
     <h1>$10 off your first Waymo ride</h1>
     <h2>San Francisco territory only</h2>
 
-    ${!activated ? `<p style="color: red;">Code has been used up this month. Try again next month.</p>` : ""}
-    <p id="copiedText" style="color: green; display: none;">Code copied!</p>
+    ${!activated ? `<p style="color: darkred;">Code has been used up this month. Try again next month.</p>` : ""}
+    <p id="copiedText">Code copied!</p>
 
     <div id="codeBox" class="code-box ${!activated ? "error" : ""}">
       <input type="text" id="promoCode" value="${promoCode}" readonly style="border: none; background: none; width: 100%; font-size: 1.5rem;">
       <button class="copy-btn" onclick="copyCode()" ${!activated ? "disabled" : ""}>📑</button>
     </div>
 
-    <p>Redeem in <strong>Account > Offers & Promotions > Redeem Code</strong></p>
-    
     <a href="${fullLink}" class="big-button">Download App</a>
+    <p class="redeem-text">Redeem in Account > Offers & Promotions > Redeem Code</p>
   </div>
 
   <script>
