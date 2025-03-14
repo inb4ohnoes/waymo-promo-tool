@@ -6,7 +6,7 @@
   "kv_namespaces": [
     {
       "binding": "PROMO_KV",
-      "id": "fc13092f2afa43eb9312b61490f93ae9"
+      "id": "5a64c4e511f448ffb42fdc5e167996d1"
     }
   ],
   "assets": {
@@ -14,7 +14,7 @@
     "binding": "ASSETS"
   },
   "routes": [
-    { "pattern": "waymo.burrito.software", "custom_domain": true }
+    { "pattern": "waymo.probably.ninja", "custom_domain": true }
   ],
   "observability": {
     "enabled": true
